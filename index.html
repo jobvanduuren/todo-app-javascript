@@ -4,6 +4,9 @@
   <meta charset="utf-8">
   <title>TodoList</title>
   <style>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
     body {
       font-family: Helvetica, Arial, sans-serif;
       font-size: 18px;
@@ -101,7 +104,14 @@
   </div>
 
   <script>
-  	// JavaScript here...
+  // select the element containing the count
+var totalCount = document.getElementById('total-count');
+
+// count the number of todo's by their class name
+var totalTodos = document.getElementsByClassName("todo").length;
+
+// update the HTML inside the counter element
+ totalCount.innerHTML = totalTodos;
   </script>
 </body>
 </html>

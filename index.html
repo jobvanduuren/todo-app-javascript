@@ -57,6 +57,10 @@
       color: #999;
     }
 
+    ul#todolist label {
+      margin: 15px;
+    }
+
     .footer {
       margin-top: 10px;
       background: #323232;
@@ -102,7 +106,10 @@
       Todo: <span id="todo-count">1</span> •
       Done: <span id="completed-count">0</span> •
       Total: <span id="total-count">1</span>
+
+
     </div>
+    <a href="#" onClick="cleanUpDoneTodos(); return false">Clean up</a>
   </div>
 
   <script>
@@ -167,8 +174,8 @@ function createTodo(title) {
   listItem.appendChild(checkbox);
 
   // create some whitespace to put between the checkbox and the label
-  var space = document.createTextNode(" ");
-  listItem.appendChild(space);
+  // var space = document.createTextNode(" ");
+  // listItem.appendChild(space);
 
   // create a label that holds the title and add it to the list item
   var label = document.createElement("label");
@@ -187,6 +194,18 @@ function createTodo(title) {
 // toggles
 function nextTodoId() {
   return document.getElementsByClassName("todo").length + 1;
+}
+
+function cleanUpDoneTodos() {
+  var list = document.getElementById("todolist");
+  var doneItems = document.getElementsByClassName("completed");
+
+  // Reverse loop through the done todo items so we can remove them without changing the index of the remaining items when we remove them
+  for (var i = doneItems.length; i > 0; i--) {
+    list.removeChild(doneItems[i-1]);
+  }
+
+  updateCounters();
 }
 
 
